@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private String operator;
     private String currentOpr;
     private Double lastNum;
+    private Double mrPlace = 0.0;
     private enum LAST_CLICKED {
         OPERAND, OPERATOR, NONE, EQUAL
     };
@@ -81,6 +82,18 @@ public class MainActivity extends AppCompatActivity {
                 a /= b;
         }
         return a;
+    }
+
+    public void mrplusClicked(View view){
+        mrPlace = Double.valueOf(ed_display.getText().toString());
+    }
+
+    public void mrminClicked(View view){
+        mrPlace = 0.0;
+    }
+
+    public void mrClicked(View view){
+        ed_display.setText(mrPlace.toString());
     }
 
     public void equalClicked(View view) {

@@ -57,18 +57,21 @@
             android:id="@+id/btnMRPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="mrplusClicked"
             android:text="MR+" />
 
         <Button
             android:id="@+id/btnMRMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="mrminClicked"
             android:text="MR-" />
 
         <Button
             android:id="@+id/btnMR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="mrClicked"
             android:text="MR" />
     </LinearLayout>
 
@@ -199,6 +202,7 @@
                 android:id="@+id/btnDivide"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:onClick="operatorClicked"
                 android:text="/" />
 
             <Button

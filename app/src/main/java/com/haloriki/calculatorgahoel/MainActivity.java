@@ -19,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private String currentOpr;
     private Double lastNum;
     private Double mrPlace = 0.0;
+
     private enum LAST_CLICKED {
         OPERAND, OPERATOR, NONE, EQUAL
-    };
+    }
+
+    ;
 
     private LAST_CLICKED last_clicked = LAST_CLICKED.NONE;
 
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void numericalClicked(View view) {
 
-        if(last_clicked == LAST_CLICKED.OPERATOR){
+        if (last_clicked == LAST_CLICKED.OPERATOR) {
             ed_display.setText("0.0");
         }
 
@@ -49,26 +52,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void operatorClicked(View view) {
 
-        if(last_clicked == LAST_CLICKED.EQUAL){
+        if (last_clicked == LAST_CLICKED.EQUAL) {
             result = 0.0;
         }
         String currentNum = ed_display.getText().toString();
         currentOpr = ((Button) view).getText().toString();
 
-        if(result > 0.0){
+        if (result > 0.0) {
             result = doCalc(result, Double.valueOf(currentNum), operator);
-        }else{
+        } else {
             result = Double.valueOf(currentNum);
         }
 
-        ed_display.setText(result.toString());
+        ed_display.setText(String.format("%.2f", result));
         operator = currentOpr;
         last_clicked = LAST_CLICKED.OPERATOR;
 
     }
 
-    private Double doCalc(Double  a, Double b, String opr){
-        switch (opr){
+    private Double doCalc(Double a, Double b, String opr) {
+        switch (opr) {
             case "+":
                 a += b;
                 break;
@@ -84,15 +87,15 @@ public class MainActivity extends AppCompatActivity {
         return a;
     }
 
-    public void mrplusClicked(View view){
+    public void mrplusClicked(View view) {
         mrPlace = Double.valueOf(ed_display.getText().toString());
     }
 
-    public void mrminClicked(View view){
+    public void mrminClicked(View view) {
         mrPlace = 0.0;
     }
 
-    public void mrClicked(View view){
+    public void mrClicked(View view) {
         ed_display.setText(mrPlace.toString());
     }
 
@@ -100,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
         Double currentNum = Double.valueOf(ed_display.getText().toString());
 
-        if(last_clicked == LAST_CLICKED.EQUAL){
+        if (last_clicked == LAST_CLICKED.EQUAL) {
             currentNum = lastNum;
-        }else{
+        } else {
             lastNum = currentNum;
         }
         result = doCalc(result, Double.valueOf(currentNum), currentOpr);
-        ed_display.setText(result.toString());
+        ed_display.setText(String.format("%.2f", result));
         last_clicked = LAST_CLICKED.EQUAL;
     }
 
